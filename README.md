@@ -8,19 +8,19 @@
 |                                           |
 
 
-1. Principio de responsabilidad única
+1. Principio de responsabilidad única (Angel)
 
 
 * Preguntas 1- 4 → 3 puntos
 
 
 
-2. Principio abierto/cerrado
+2. Principio abierto/cerrado  (Miller)
 
 * Preguntas 5- 11 → 4 puntos
 
 
-3. Principio de sustitución de Liskov
+3. Principio de sustitución de Liskov  (Kenyi)
 
 * Preguntas 12- 18 → 4 puntos
 
@@ -30,7 +30,7 @@
 * Preguntas 19- 30 → 5 puntos
 
 
-5. Principio de inversión de dependencia
+5. Principio de inversión de dependencia (José)
 
 * Preguntas 31- 36 → 4 puntos
 
