@@ -8,29 +8,46 @@
 |                                           |
 
 
-1. Principio de responsabilidad única (Angel)
+### Principio de responsabilidad única (Angel)
 
 
 * Preguntas 1- 4 → 3 puntos
 
 
-
-2. Principio abierto/cerrado  (Miller)
+### Principio abierto/cerrado  (Miller)
 
 * Preguntas 5- 11 → 4 puntos
 
-
-3. Principio de sustitución de Liskov  (Kenyi)
+### Principio de sustitución de Liskov  (Kenyi)
 
 * Preguntas 12- 18 → 4 puntos
+12. Muestra la salida y explica los resultados en función de los métodos entregados
+
+![Salida de la pregunta 12](./src/main/resources/pregunta12.png)
+
+>Se que observa que primero se muestra las solicitudes anterioes
+>luego ..
 
 
-4. Principio de segregación de interfaz
+13. Agregando
+14. Dentro del método main(), utilizas una instancia de usuario invitado e intentas
+    usar su clase auxiliar de la misma manera,¿ qué tipo de excepción te encuentras?¿Cuál es la
+    solución?
+
+Nos resulta:
+![Salida de la pregunta 12](./src/main/resources/pregunta14e.png)
+> Nos resulta la exepcion java.lang.UnsupportedOperationException, es decir la operación
+> que se quiere ejecutar no es compatible.
+
+>Para olucionar debemmos, resultandonos:
+
+![Salida de la pregunta 12](./src/main/resources/pregunta14.png)
+
+### Principio de segregación de interfaz
 
 * Preguntas 19- 30 → 5 puntos
 
-
-5. Principio de inversión de dependencia (José)
+### Principio de inversión de dependencia (José)
 
 * Preguntas 31- 36 → 4 puntos
 
