@@ -20,6 +20,7 @@
 5. ¿Por que no es correcto colocar displayResult() y evaluateDistinction() en la misma
 clase, como la siguiente:
 
+```java
     class Estudiante {
         // ….
         public void displayResult() {
@@ -30,6 +31,7 @@ clase, como la siguiente:
         }
         // …
     }
+```
 
 
 
