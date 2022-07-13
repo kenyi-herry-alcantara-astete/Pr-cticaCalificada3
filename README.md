@@ -20,6 +20,18 @@
 5. ¿Por que no es correcto colocar displayResult() y evaluateDistinction() en la misma
 clase, como la siguiente:
 
+class Estudiante {
+    // ….
+    public void displayResult() {
+    // codigo
+    }
+    public void evaluateDistinction() {
+    // codigo
+    }
+    // …
+    }
+
+
 
 ### Principio de sustitución de Liskov  (Kenyi)
 
