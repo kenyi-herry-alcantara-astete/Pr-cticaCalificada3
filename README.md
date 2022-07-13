@@ -32,6 +32,15 @@ clase, como la siguiente:
         // …
     }
 ```
+>Al modificar ya sea displayRessult() agregrando una nueva salida de resultados o mas importante
+>aun, al modificar evaluateDistinction() supongamos que queremos agregar nuevos departamentos por ejemplo ingenieria
+>tendremos que modificar evaluateDistinction() para evaluar la distinción para el departamento de ingenieria pero este 
+>metodo se encuentra dentro de estudiantes por ende estariamos modificando la clase estudiante lo que violaria el 
+>principio de abierto y cerrado porque la clase Estudiante debe estar cerrada para cambios pero abierta a extenciones lo 
+>adecuado seria aplicar el patron de diseño strategy creando una interfaz que me permita conectar Estudiante con las clases evaluateDistinction()
+>y displayResult() de esta manera al modificar cualquiera de las 2 la class Estudiante permanece invariante cumpliento el
+>principio SOLID de abierto y cerrado.
+
 
 
 
