@@ -41,6 +41,8 @@ clase, como la siguiente:
 >y displayResult() de esta manera al modificar cualquiera de las 2 la class Estudiante permanece invariante cumpliento el
 >principio SOLID de abierto y cerrado.
 
+6.Muestra la salida y explica los resultados en función de los métodos entregados
+
 
 
 
