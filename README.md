@@ -17,6 +17,9 @@
 ### Principio abierto/cerrado  (Miller)
 
 * Preguntas 5- 11 → 4 puntos
+5. ¿Por que no es correcto colocar displayResult() y evaluateDistinction() en la misma
+clase, como la siguiente:
+
 
 ### Principio de sustitución de Liskov  (Kenyi)
 
