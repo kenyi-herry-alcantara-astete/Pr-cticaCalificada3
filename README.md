@@ -21,6 +21,7 @@
 clase, como la siguiente:
 
 class Estudiante {
+
     // ….
     public void displayResult() {
     // codigo
