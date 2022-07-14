@@ -12,6 +12,18 @@
 
 
 * Preguntas 1- 4 → 3 puntos
+1.dfadsf
+
+2. asasdf
+
+
+4. adsfadsf
+
+
+6. sasdfsdafsdafssadf
+
+
+
 
 
 ### Principio abierto/cerrado  (Miller)
