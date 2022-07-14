@@ -5,25 +5,30 @@
 | Alcantara Astete Kenyi Herry  20180343C   |
 | Caycho Villalobos José Gabriel 20190584C  |
 | Alexander Miller Rojas Sanchez  20190574H |
-|             Angel chauca de la cruz                              |
+|             Angel Darwing Chauca De La Cruz  20182666D                            |
 
 
 ### Principio de responsabilidad única (Angel)
 
 
 * Preguntas 1- 4 → 3 puntos
-1.dfadsf
 
-2. asasdf
+1. Muestra la salida y explica los resultados en función de los métodos entregados
 
-
-4. adsfadsf
+2. ¿Cuál es el problema con este diseño y las razones posibles del problema?
 
 
-6. sasdfsdafsdafssadf
-
-
-
+3. Modifica la clase Empleado.
+    3.1 Agrega dos clases:
+        3.1.1 La clase SeniorityChecker que contiene el método checkSeniority() 
+        3.1.2 La clase GeneradorIDEmpleado contiene el método generateEmpId(...) para generar la identificación del empleado.
+    3.2 Para mejorar la legibilidad del código y evitar torpezas dentro del método main():
+        3.2.1 Utiliza elmétodo estático showEmpDetail(...). Este método llama al método displayEmpDetail() de
+              Empleado, al método generateEmpId() de GeneradorIDEmpleado y al método checkSeniority()
+              de SeniorityChecker. Tú entiendes que este método no era necesario, pero hace que el código
+              del cliente sea simple y fácilmente comprensible.
+              
+4. Realiza una demostración completa que sigue a SRP. Explica tus resultados              
 
 
 ### Principio abierto/cerrado  (Miller)
