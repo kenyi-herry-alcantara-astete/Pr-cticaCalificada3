@@ -31,7 +31,7 @@
 4. Realiza una demostración completa que sigue a SRP. Explica tus resultados              
 
 
-### Principio abierto/cerrado  (Miller)
+>### Principio abierto/cerrado  (Miller)
 
 * Preguntas 5- 11 → 4 puntos
 5. ¿Por que no es correcto colocar displayResult() y evaluateDistinction() en la misma
@@ -60,18 +60,18 @@ clase, como la siguiente:
 
 6.Muestra la salida y explica los resultados en función de los métodos entregados
 
-![Salida de la pregunta 12](./src/main/resources/pregunta6.png)
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.png)
 
 >Se crea una lista enrolledStudents del tipo Estudiante en la clase Cliente donde esta el main, se usa el método enrollStudents() para llenar dicha lista con los datos de los estudiantes, estos datos son suministrados por el cliente.
-![Salida de la pregunta 12](./src/main/resources/pregunta6.1.png)
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.1.png)
 >Para poder mostrar los resultados usando un objeto de la clase Estudiante sobreescribimos el método toString() este metodo ya viene
 > por defecto en java en el paquete java Object dicho método al imprimir un objeto de una clase te muestra el paquete, el nombre y un codigo hash de la Clase a cual pertenece el objeto impreso, convenientemente se sobrescribe el método para poder mostrar los atributos del estudiante sin hacerlo uno por uno.
-![Salida de la pregunta 12](./src/main/resources/pregunta6.2.png)
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.2.png)
 > Imprimimos
-![Salida de la pregunta 12](./src/main/resources/pregunta6.3.png)\
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.3.png)\
 >Por ultimo de la misma manera que estudiantes se muestra las distinciones donde el método evaluateDistinction() es el encargado , mostrando distinciones de acuerdo al score que es una atributo de estudiante, te muestra si as
 >recibido una distinción de acuerdo al departamento que pertenezcan.
-![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)
 > Imprimimos
 > ![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)
 
