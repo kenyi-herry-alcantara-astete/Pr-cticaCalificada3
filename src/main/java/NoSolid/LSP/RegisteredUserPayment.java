@@ -13,6 +13,10 @@ public class RegisteredUserPayment implements Payment{
     @Override
     public void newPayment(){
         System.out.println("Procesando de "+name+", la actual solicitud de pagos .");
+    }
 
+    @Override
+    public String getType() {
+        return "registered";
     }
 }

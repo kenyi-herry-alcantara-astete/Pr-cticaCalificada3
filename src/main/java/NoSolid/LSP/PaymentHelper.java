@@ -11,8 +11,11 @@ public class PaymentHelper {
     }
     public void showPreviousPayments() {
         for (Payment payment: payments) {
-            payment.previousPaymentInfo();
-            System.out.println("------");
+            //Verificamos si esta registrado para mostrar los detalles de su pagos anteriores
+            if (payment.getType().equals("registered")){
+                payment.previousPaymentInfo();
+                System.out.println("------");
+            }
         }
     }
     public void processNewPayments()  {
