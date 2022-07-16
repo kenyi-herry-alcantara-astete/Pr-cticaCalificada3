@@ -1,6 +1,6 @@
 package NoSolid.LSP;
 
-public class Cliente {
+/*public class Cliente {
     public static void main(String[] args) {
         System.out.println("Demostracion sin LSP\n");
         PaymentHelper helper = new PaymentHelper();
@@ -22,4 +22,4 @@ public class Cliente {
         helper.processNewPayments();
 
     }
-}
+}*/
