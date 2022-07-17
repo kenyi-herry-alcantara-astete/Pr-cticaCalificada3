@@ -15,20 +15,65 @@
 
 1. Muestra la salida y explica los resultados en función de los métodos entregados
 
+> ![Salida de la pregunta 12](./src/main/resources/pregunta1.1.png)\
+* El metodo ( public void displayEmpDetail()) muestra en pantalla el nombre y anios de experiencia.
+* El metodo (public String checkSeniority(double experienceInYears)) Verifica si los anios de xperiaencia es mayor a 5.
+* El metodo (generateEmpID(String empFirstName)) genera aleatoriamente el ID del empleado.
+  Esto en base al primer nombre del empleado.
+* El metodo (showEmpDetail(Empleado emp)) muestra en pantalla los detalles obtenidos del empleado.
+
 2. ¿Cuál es el problema con este diseño y las razones posibles del problema?
+> El problema con el diseño en el que se encuentra el codigo es que incumple el primer principio
+ SOLID, el cual es el SRP. Debido a que las clases tienen diferentes propositos o roles, por ejemplo
+la clase Cliente tiene 2 métodos: main() y showEmpDetail(), que tienen diferentes propósitos.
+3. Modifica la clase Empleado. 
+> 3.1 Agrega dos clases:
+* 3.1.1 La clase SeniorityChecker que contiene el método checkSeniority() 
+```java
 
+public class SeniorityChecker {
+    public String checkSeniority(double experienceInYears){
 
-3. Modifica la clase Empleado.
-    3.1 Agrega dos clases:
-        3.1.1 La clase SeniorityChecker que contiene el método checkSeniority() 
-        3.1.2 La clase GeneradorIDEmpleado contiene el método generateEmpId(...) para generar la identificación del empleado.
-    3.2 Para mejorar la legibilidad del código y evitar torpezas dentro del método main():
-        3.2.1 Utiliza elmétodo estático showEmpDetail(...). Este método llama al método displayEmpDetail() de
+        return  experienceInYears > 5 ?"senior":"junior";
+    }
+}
+
+```
+* 3.1.2 La clase GeneradorIDEmpleado contiene el método generateEmpId(...) para generar la identificación del empleado.
+```java
+import java.util.Random;
+
+public class GeneradorIDEmpleado {
+    String empId;
+    public String generateEmpId(String empFirstName){
+        int random = new Random().nextInt(1000);
+        empId = empFirstName.substring(0,1)+random;
+        return empId;
+    }
+
+}
+
+```
+> 3.2 Para mejorar la legibilidad del código y evitar torpezas dentro del método main():
+* 3.2.1 Utiliza elmétodo estático showEmpDetail(...). Este método llama al método displayEmpDetail() de
               Empleado, al método generateEmpId() de GeneradorIDEmpleado y al método checkSeniority()
               de SeniorityChecker. Tú entiendes que este método no era necesario, pero hace que el código
               del cliente sea simple y fácilmente comprensible.
-              
+```java
+    private static void showEmpDetail(Empleado emp) {
+        GeneradorIDEmpleado id = new GeneradorIDEmpleado();
+        SeniorityChecker se= new SeniorityChecker();
+        emp.displayEmpDetail();
+        System.out.println("El ID del empleado es: "+ id.generateEmpId(emp.firstName));
+        System.out.println("Este empleado es un" + " empleado " + se.checkSeniority(emp.experienceInYears));
+        }
+```            
 4. Realiza una demostración completa que sigue a SRP. Explica tus resultados              
+
+> ![Salida de la pregunta 12](./src/main/resources/pregunta4.png)
+Se puede observar que el resultado conSRP es el mismo sin SRP, pero a diferencia del codigo sin SRP se tien un codigo
+limpio y mejor estructurado, adicionalmente se tiene un menor tiempo en el Build.
+### Principio abierto/cerrado  (Miller)
 
 
 >### Principio abierto/cerrado  (Miller)
