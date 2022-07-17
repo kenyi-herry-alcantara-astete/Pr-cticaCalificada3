@@ -441,12 +441,11 @@ public class Cliente {
     Cuando actualices Impresora, también debes actualizar la clase impresoraBasica para
     adaptarse a este cambio. ¡Ahora ves el problema!. Explica el problema.
 
-Modificando el metodo **sendFax** de la clase **impresora
-avanzada**:
+Modificando el metodo **sendFax** de la clase **ImpresoraAvanzada**:
 
 Antes:
 ```java
-    public class ImpresoraAvanzada implements Impresora {
+public class ImpresoraAvanzada implements Impresora {
     @Override
     public void printDocument() {
         System.out.println("La impresora avanzada imprime un documento.");
@@ -466,7 +465,7 @@ Despues:
         System.out.println("La impresora avanzada imprime un documento.");
     }
 
-    //Modificación para que reciba un tipo de fax.
+    //Modificación para que reciba un tipo de Fax.
     @Override
     public void sendFax(Fax faxType) {
         System.out.println("La impresora avanzada envía un fax.");
@@ -475,6 +474,7 @@ Despues:
 ```
 Esto nos da un error, ya que **sentFax** esta declarado el la 
 interfaz **Impresora** como un método que no recibe ningún parámetro.
+
 ```java
 interface Impresora {
     void printDocument();
@@ -499,7 +499,7 @@ class ImpresoraBasica implements Impresora {
         System.out.println("La impresora basica imprime un documento.");
     }
     @Override
-    public void sendFax() { //Error de sobreescritura
+    public void sendFax() { //Error de sobreescritura por falta de parámetro
         throw new UnsupportedOperationException();
     }
 }
@@ -513,22 +513,44 @@ class ImpresoraBasica implements Impresora {
         System.out.println("La impresora basica imprime un documento.");
     }
     @Override
-    public void sendFax(Fax faxType) { //Corrigiendo
+    public void sendFax(Fax faxType) { //Corrigiendo (Recibiendo parámetro)
         throw new UnsupportedOperationException();
     }
 }
 ```
->Es bien sabido que el método **sentFax** de la clase **ImpresoraBasica** no es utilizada.
-> Pero aun así tuvimos que realizar el cambio en su firma. Esto no es eficiente (Perdida de tiempo).
+
+>Es bien sabido que el método **sendFax** de la clase **ImpresoraBasica** no es utilizada.
+> Pero aun así tuvimos que realizar el cambio en su firma, colocar un parametro de typo **Fax**. Esto no es eficiente (perdida de tiempo).     
 > y viola el principio abierto cerrado (OCP).
 
-#### 21. Si has entendido correctamente el problema. El ISP te sugiere que te ocupes de 
-este tipo de escenario. Explica tu respuesta.
+Obs: La clase **JerarquiaFax** lo hemos codificado de la siguiente manera, para mostrar el **tipo de Fax** que se envía:
+
+```java
+interface Fax {
+    String getTypeFax();
+}
+
+class LanFax implements Fax {
+@Override
+    public String getTypeFax() {
+        return "LanFax";
+    }
+}
+
+class EFax implements Fax {
+@Override
+    public String getTypeFax() {
+        return "EFax";
+    }
+}
+```
+
+#### 21. Si has entendido correctamente el problema. El ISP te sugiere que te ocupes de este tipo de escenario. Explica tu respuesta.
 
 >ISP nos sugiere que separemos la interfaz **Impresora** en dos interfaces; una para 
 > imprimir y otra para enviar Fax. Ya que la clase
 > **ImpresoraBasica** que la implementa, no tiene la necesidad de sobreescribir su metodo 
-> **sentFax** ya que no es una de sus funciones que desempeña.
+> **sendFax** ya que no es una de sus funciones que desempeña.
 
 #### 22. ¿Es conveniente usar e inicializar el siguiente código?
 ```java
@@ -541,10 +563,257 @@ interface Impresora {
 > solo debe sobrescribir el método **printDocument**. Pero esta interfaz **Impresora**
 > la obliga sobreescrir tambien el método **sentFax**, aunque no sea su naturaleza tener esta funcionalidad.
 
-#### 23. Si comienzas tu codificación considerando las impresoras avanzadas que pueden
-imprimir y enviar un fax, está bien. Pero en una etapa posterior, si tu programa también
-necesita admitir impresoras básicas,¿ qué código puedes escribir?,
+#### 23. Si comienzas tu codificación considerando las impresoras avanzadas que pueden imprimir y enviar un fax, está bien. Pero en una etapa posterior, si tu programa tambiénnecesita admitir impresoras básicas,¿ qué código puedes escribir?,
 
+Los códigos que podemos escribir para darle una solución, sería pasar una exepción cuando se quiere ejecutar
+el método **sendFax**.
+
+Solución 1: Método vacío. Pero el cliente no sabrá que sucedío, cuando no recibe ninguna respuesta. 
+
+```java
+class ImpresoraBasica implements Impresora {
+    @Override
+    public void printDocument() {
+        System.out.println("La impresora basica imprime un documento.");
+    }
+
+    @Override
+    public void sendFax() {
+        //Solución 1
+    }
+}
+```
+Solución 2: Mostrarle la respuesta: *"La impresora no soporta esta funcionalidad"*.
+            Esto es ironico, dado que el proposito de esta funcionalid, es demostrar que no funione este metodo. 
+```java
+class ImpresoraBasica implements Impresora {
+    @Override
+    public void printDocument() {
+        System.out.println("La impresora no soporta esta funcionalidad.");
+    }
+
+    @Override
+    public void sendFax() {
+        System.out.print("La impresora no soporta esta funcionalidad");
+    }
+}
+```
+
+Solución 3: Lanzar una excepción **UnsupportedOperationException**:
+Detener la ejecución del programa, para que el cliente sepa que hay un error cuando ejecuta el método.
+```java
+class ImpresoraBasica implements Impresora {
+    @Override
+    public void printDocument() {
+        System.out.println("La impresora basica imprime un documento.");
+    }
+
+    @Override
+    public void sendFax() {
+        throw new UnsupportedOperationException(); //Solución
+    }
+}
+```
+
+
+>De esta manera podemos lanzar una exepción a la hora de que se 
+
+Obs: Para dar una analogia en el mundo real, imaginemos una impresora real basica  posee el boton adicional **sendFax**.
+El cliente preciona el boton, la impresora funiona por un momento y luego no sucede nada.
+
+#### 24. Comprueba tus respuestas añadiendo dentro de main(), el siguiente código polimórfico:
+>Para la solucion 3, que lanza una excepcion:
+
+Para el primer código brindado:
+```java
+class Cliente {
+    public static void main(String[] args) {
+        System.out.println("Demostracion sin ISP");
+        Impresora impresora = new ImpresoraAvanzada();
+        impresora.printDocument();
+        impresora.sendFax();
+
+        impresora = new ImpresoraBasica();
+        impresora.printDocument();
+        impresora.sendFax();// Lanza un error
+    }
+}
+```
+
+
+![Salida de la pregunta 12](./src/main/resources/24a.png)
+
+Par el segundo código:
+```java
+class Cliente {
+public static void main(String[] args) {
+
+        List<Impresora> impresoras = new ArrayList<Impresora>();
+        impresoras.add(new ImpresoraAvanzada());
+        impresoras.add(new ImpresoraBasica());
+        for (Impresora dispositivo : impresoras) {
+            dispositivo.printDocument();
+            dispositivo.sendFax();
+        }
+    }
+}
+```
+![Salida de la pregunta 12](./src/main/resources/24b.png)
+
+>Efectivamente en ambos casos nos resulta una excepción de tiempo de ejecución.
+
+#### 25. Reemplaza el segmento de código con una expresión lambda adecuada. Tú eliges cuál quieres usar.
+```java
+class Cliente {
+public static void main(String[] args) {
+
+        List<Impresora> impresoras = new ArrayList<Impresora>();
+        impresoras.add(new ImpresoraAvanzada());
+        impresoras.add(new ImpresoraBasica());
+
+        //Utilizando expreciones lambda
+        impresoras.forEach((dispositivo)->{
+                    dispositivo.printDocument();
+                    dispositivo.sendFax();
+        });
+    }
+}
+```
+Salida utilizando expresiones lambda:
+
+![](./src/main/resources/25.png)
+
+#### 26. Muestra la salida y explica los resultados en función de los métodos entregados.
+
+En la clase **cliente**:
+```java
+class Cliente {
+public static void main(String[] args) {
+
+        List<Impresora> impresoras = new ArrayList<Impresora>();
+        impresoras.add(new ImpresoraAvanzada());
+        impresoras.add(new ImpresoraBasica());
+
+        Fax lanfax = new LanFax();
+        Fax efax = new EFax();
+
+
+        //Utilizando expreciones lamda
+        impresoras.forEach((dispositivo)->{
+                    dispositivo.printDocument();
+                    dispositivo.sendFax(lanfax);
+                    dispositivo.sendFax(efax);
+        });
+    }
+}
+```
+![](./src/main/resources/26.png)
+
+>1. Para cada impresora de la lista de impresoras llamamos a los métodos **printDocument** y **sendFax**.
+>2. En la **InpresoraAvanzada** cumplen su funcionalidad sin mostrar errores. 
+>3. En la **ImpresoraBasica** el método **printDocument** cumple la funionalidad, pero el método **sendFax** lanza la execpción
+haciendo que el programa se detenga.
+
+#### 27.Supongamos que necesitas admitir otra impresora que pueda imprimir, enviar faxes y fotocopiar. En este caso, si agregas un método de fotocopiado en la interfaz Impresora, los dos clientes existentes, ImpresoraBasica y ImpresoraAvanzada, deben adaptarse al cambio. Busquemos una mejor solución. 
+
+>Ahora la interfaz **Impresora** declarando un solo método **printDocument**.
+```java
+interface Impresora {
+    void printDocument();
+}
+```
+>Se agrega la interfaz **DispositivoFax** declarando el método **sendFax**.
+```java
+interface DispositivoFax {
+    void sendFax();
+}
+```
+
+> La clase **ImpresoraAvanzada** implementa las interfaces **Impresora** y **DispositivoFax**.
+> .
+
+```java
+public class ImpresoraAvanzada implements Impresora, DispositivoFax{
+    @Override
+    public void printDocument() {
+        System.out.println("La impresora avanzada imprime un documento.");
+    }
+
+    @Override
+    public void sendFax() {
+        System.out.println("La impresora avanzada envía un fax");
+    }
+}
+```
+
+>La clase **ImpresoraBasica** solo implementa la interfaz **Impresora**.
+```java
+public class ImpresoraBasica implements Impresora{
+    @Override
+    public void printDocument() {
+        System.out.println("La impresora avanzada imprime un documento.");
+    }
+}
+```
+
+La clase **cliente**: 
+```java
+public class Cliente {
+    public static void main(String[] args) {
+        System.out.println("Demostracion ISP");
+
+        Impresora impresora = new ImpresoraBasica();
+        impresora.printDocument();
+        impresora = new ImpresoraAvanzada();
+        impresora.printDocument();
+
+        DispositivoFax fax = new ImpresoraAvanzada();
+        fax.sendFax();
+
+    }
+}
+
+```
+
+Ejecución:
+>1. Se observa que la impresora básica solo cumple la funcionalidad de imprimir documento.
+>2. Se observa que la impresora avanzada cumple su funcionalidad de imprimir Documento y enviar Fax.
+
+![](./src/main/resources/27.png)
+
+#### 28. ¿Qué sucede si usa un método predeterminado dentro de la interfaz?
+
+###### En la sección no solid:
+Haciendo al método **sendFax** predeterminado de la interfaz **Impresora**.
+```java
+interface Impresora {
+    void printDocument();
+    
+    //Método predeterminado
+    default void sendFax(Fax typeFax){
+        System.out.println("I am a default send :)");
+    };
+}
+```
+>Las clases que implementan esta interfaz, pueden sobreescrbir este método predeterminado, pero no tiene la obligacion de hacerlo ejecutando el método predeterminado. 
+  
+#### 29. ¿Qué sucede si proporcionas un método de fax predeterminado en una interfaz?. Viste el problema potencial con esto!
+
+> Sucedería que la clase **ImpresoraBasica** teendria la fucionalidad de enviar fax,
+> aunque no la implemente explicitamente este método.
+
+>El problema potencial en esto seria que un método
+> predeterminado se implementaria implicitamente en las clases que implementan esta interfaz,
+> aunque estas no requieran tener esta funcionalidad.
+>
+
+#### 30. ¿Qué sucede si usa un método vacío, en lugar de lanzar la excepción?
+> Este es la primera solucion mostradas en la pregunta 21.
+La ejecución correspondiente es:
+
+![](./src/main/resources/30.png)
+
+>Se observa que no sucede ningún error. 
 ### Principio de inversión de dependencia (José)
 
 * Preguntas 31- 36 → 4 puntos
