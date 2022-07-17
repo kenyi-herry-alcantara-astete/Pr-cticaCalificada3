@@ -336,7 +336,7 @@ public class RegisteredUserPayment implements NewPayment,PreviousPayment {
 }
 ```
 d. La clase **GuestUserPayment** implementa solo **NewPayment**:
->Un usuario invitado cuando decide ralizar un pago. Este
+>Un usuario invitado cuando decide realizar un pago. Este
 > ***solo*** debe ser capaz de generar nuevas solicitudes de pago.
 ```java
 public class GuestUserPayment implements NewPayment{
