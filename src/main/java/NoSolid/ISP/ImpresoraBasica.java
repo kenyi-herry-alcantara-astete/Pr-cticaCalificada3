@@ -6,8 +6,12 @@ class ImpresoraBasica implements Impresora {
         System.out.println("La impresora basica imprime un documento.");
     }
 
+   /*
     @Override
-    public void sendFax() {
-        throw new UnsupportedOperationException();
+    public void sendFax(Fax typeFax) {
+        Impresora.super.sendFax(typeFax);
+        //throw new UnsupportedOperationException();
     }
+    */
+
 }

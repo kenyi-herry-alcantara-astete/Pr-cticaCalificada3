@@ -7,7 +7,8 @@ public class ImpresoraAvanzada implements Impresora {
     }
 
     @Override
-    public void sendFax() {
-        System.out.println("La impresora avanzada envía un fax.");
+    public void sendFax(Fax typeFax) {
+        System.out.println("La impresora avanzada envía un "+typeFax.getTypeFax());
     }
+
 }
