@@ -209,7 +209,7 @@ instancia **guestUser** de **GuestUserPayment** y agregamos a helper.
 public class Cliente {
     public static void main(String[] args) {
         System.out.println("Demostracion sin LSP\n");
-        PaymentHelper helper = new PaymentHelper();
+        PaymentHelper helper = new PaymentHelper();gi
 
         RegisteredUserPayment pagoAbejita = new RegisteredUserPayment("Abejita");
         RegisteredUserPayment pagoChalito = new RegisteredUserPayment("Chalito");
