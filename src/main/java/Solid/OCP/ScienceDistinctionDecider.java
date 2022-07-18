@@ -1,5 +1,11 @@
 package Solid.OCP;
-/*
+
 public class ScienceDistinctionDecider implements DistinctionDecider {
- ...completa
-*/
+
+    @Override
+    public void EvaluationDistinction(Estudiante estudiante) {
+            if (estudiante.score > 80) {
+                System.out.println(estudiante.regNumber+" ha recibido una distincion en ciencias.");
+            }
+    }
+}
