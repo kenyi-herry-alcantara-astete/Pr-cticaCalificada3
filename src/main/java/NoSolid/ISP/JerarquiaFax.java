@@ -1,5 +1,4 @@
 package NoSolid.ISP;
-
 interface Fax {
     String getTypeFax();
 }

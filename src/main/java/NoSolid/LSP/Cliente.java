@@ -5,21 +5,18 @@ package NoSolid.LSP;
         System.out.println("Demostracion sin LSP\n");
         PaymentHelper helper = new PaymentHelper();
 
-        // Instanciando dos usuarios registrados
         RegisteredUserPayment pagoAbejita = new RegisteredUserPayment("Abejita");
         RegisteredUserPayment pagoChalito = new RegisteredUserPayment("Chalito");
 
-        // Agregando los usuarios a los helper
         helper.addUser(pagoAbejita);
         helper.addUser(pagoChalito);
 
+        //Un usuario invitado decide realizar un pago.
         GuestUserPayment guestUser = new GuestUserPayment();
         helper.addUser(guestUser);
 
-        // Procesando el pago usando la clase helper
-        // Encuentras algun problema?
+        //Mostrando los detalles
         helper.showPreviousPayments();
         helper.processNewPayments();
-
     }
 }*/

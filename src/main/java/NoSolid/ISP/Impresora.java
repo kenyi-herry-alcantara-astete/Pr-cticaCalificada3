@@ -2,6 +2,7 @@ package NoSolid.ISP;
 
 interface Impresora {
     void printDocument();
-
-    void sendFax(Fax typeFax);
+    default void sendFax(Fax typeFax){
+        System.out.println("I am a default send :)");
+    };
 }
