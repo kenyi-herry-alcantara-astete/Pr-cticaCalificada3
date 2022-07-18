@@ -1093,6 +1093,7 @@ Una excepción a esta sugerencia podria ser si la clase de bajo nivel es inmutab
 transcurso del tiempo. Por ejemplo:
 
 Tiempo: Clase de bajo nivel.
+
 Cronometro: Clase de alto nivel.
 
 Al instanciar un objeto de la clase Cronometro, se instancia un objeto de la clase Tiempo, teniendo así que la clase Cronometro
