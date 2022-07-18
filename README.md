@@ -8,12 +8,9 @@
 |             Angel Darwing Chauca De La Cruz  20182666D                            |
 
 
-### Principio de responsabilidad única (Angel)
+### Principio de responsabilidad única
 
-
-* Preguntas 1- 4 → 3 puntos
-
-1. Muestra la salida y explica los resultados en función de los métodos entregados
+#### 1. Muestra la salida y explica los resultados en función de los métodos entregados
 
 > ![Salida de la pregunta 12](./src/main/resources/pregunta1.1.png)\
 * El metodo ( public void displayEmpDetail()) muestra en pantalla el nombre y anios de experiencia.
@@ -22,7 +19,7 @@
   Esto en base al primer nombre del empleado.
 * El metodo (showEmpDetail(Empleado emp)) muestra en pantalla los detalles obtenidos del empleado.
 
-2. ¿Cuál es el problema con este diseño y las razones posibles del problema?
+#### 2. ¿Cuál es el problema con este diseño y las razones posibles del problema?
 > El problema con el diseño en el que se encuentra el codigo es que incumple el primer principio
  SOLID, el cual es el SRP. Debido a que las clases tienen diferentes propositos o roles, por ejemplo
 la clase Cliente tiene 2 métodos: main() y showEmpDetail(), que tienen diferentes propósitos.
@@ -68,18 +65,16 @@ public class GeneradorIDEmpleado {
         System.out.println("Este empleado es un" + " empleado " + se.checkSeniority(emp.experienceInYears));
         }
 ```            
-4. Realiza una demostración completa que sigue a SRP. Explica tus resultados              
+#### 4. Realiza una demostración completa que sigue a SRP. Explica tus resultados              
 
 > ![Salida de la pregunta 12](./src/main/resources/pregunta4.png)
 Se puede observar que el resultado conSRP es el mismo sin SRP, pero a diferencia del codigo sin SRP se tien un codigo
 limpio y mejor estructurado, adicionalmente se tiene un menor tiempo en el Build.
-### Principio abierto/cerrado  (Miller)
 
 
->### Principio abierto/cerrado  (Miller)
+### Principio abierto/cerrado
 
-* Preguntas 5- 11 → 4 puntos
-5. ¿Por que no es correcto colocar displayResult() y evaluateDistinction() en la misma
+#### 5. ¿Por que no es correcto colocar displayResult() y evaluateDistinction() en la misma
 clase, como la siguiente:
 
 ```java
@@ -103,7 +98,7 @@ clase, como la siguiente:
 >y displayResult() de esta manera al modificar cualquiera de las 2 la class Estudiante permanece invariante cumpliento el
 >principio SOLID de abierto y cerrado.
 
-6. Muestra la salida y explica los resultados en función de los métodos entregados \
+#### 6. Muestra la salida y explica los resultados en función de los métodos entregados \
 
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.png)\
 
@@ -120,12 +115,12 @@ clase, como la siguiente:
 > Imprimimos\
 > ![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)\
 
-7. ¿Cuál es el problema con este diseño y las razones posibles del problema?
+#### 7. ¿Cuál es el problema con este diseño y las razones posibles del problema?
 >Si necesitamos añadir una nueva área como ingeniería, se tiene que cambiar el
 >código de la clase DistinctionDecider(), arriesgándonos a descomponerlo.El problema 
 > radica en que la clase DistinctionDecider() se encarga de la lógica y de definir nuevos departamentos 
 > esto ocasiona que al agregar un nuevo departamento modifiquemos dicha clase violando el principio de abierto y cerrado ya que la función de esta clase no esta bien definida
-8. Debes abordar el método de evaluación para la distinción de una mejor manera.
+#### 8. Debes abordar el método de evaluación para la distinción de una mejor manera.
    Por lo tanto, crea la interfaz DistinctionDecider que contiene un método llamado
    EvaluationDistinction.
 ```java
@@ -133,10 +128,7 @@ interface DistinctionDecider {
     void EvaluationDistinction();
 }
 ```
-9. Completa el código de ArtsDistinctionDecider y ScienceDistinctionDecider que
-implementan esta interfaz y sobreescriben el método de evaluateDistinction(...) para
-especificar los criterios de evaluación según sus necesidades. De esta forma, los criterios de
-distinción específicos de flujo se envuelven en una unidad independiente.
+#### 9. Completa el código de ArtsDistinctionDecider y ScienceDistinctionDecider que implementan esta interfaz y sobreescriben el método de evaluateDistinction(...) para especificar los criterios de evaluación según sus necesidades. De esta forma, los criterios de distinción específicos de flujo se envuelven en una unidad independiente.
 
 ```java
 public class ArtsDistinctionDecider implements DistinctionDecider{
@@ -161,7 +153,7 @@ public class ScienceDistinctionDecider implements DistinctionDecider {
     }
 }
 ```
-10. Realiza una demostración completa que sigue a OCP. Explica tus resultados.\
+#### 10. Realiza una demostración completa que sigue a OCP. Explica tus resultados.\
 
 ![Salida de la pregunta 12](./src/main/resources/pregunta10.png)\
 
@@ -218,7 +210,7 @@ public ArteEstudiante(String name, String regNumber, double score, String depart
 
     }
 ```
-> por ultimo el método encargado de ordenar los datos con sus respectivas indentaciones es la sobre escritura del método toString() que es un método de java.object que ya esta implícito en el proyecto.
+> Por ultimo el método encargado de ordenar los datos con sus respectivas indentaciones es la sobre escritura del método toString() que es un método de java.object que ya esta implícito en el proyecto.
 
 ```java
 public String toString() {
@@ -226,17 +218,16 @@ public String toString() {
     + score + "\n");
 }
 ```
-11. ¿Cuáles son las principales ventajas ahora?
+#### 11. ¿Cuáles son las principales ventajas ahora?
 
 >Las principales ventajas ahora es que si queremos agregar un nuevo departamento ya no tendríamos que cambiar el codigo de DistinctionDecider como se vio en la parte de NoSolid
 solo bastaría con crear una nueva clase IngenieriaDistinctionDecider y que esta implemente la interfaz DistinctionDecider haciendo esto ya no se modificaria el código de ninguna de las clases lo cual estaría cumpliendo el principio OCP cerrada para modificarse , pero abierta(IngenieriaDistinctionDecider) para extenciones , esto nos ahorra tiempo porque supongamos que tengamos mas de 20 clases y no estamos aplicando OCP tendriamos que modificar muchas clases para poder agregar una nueva implementación lo que llevaría tiempo y costo.
 
 
 
-### Principio de sustitución de Liskov  (Kenyi)
+### Principio de sustitución de Liskov  
 
-* Preguntas 12- 18 → 4 puntos
-12. Muestra la salida y explica los resultados en función de los métodos entregados
+#### 12. Muestra la salida y explica los resultados en función de los métodos entregados
 
 La salida luego de ejecutar el código es:
 
@@ -281,10 +272,7 @@ public class Cliente {
 
 
 
-13. Ahora supongamos que tienes un nuevo requisito que dice que necesitas admitir
-    usuarios invitados en el futuro. Puedes procesar la solicitud de pago de un usuario invitado,
-    pero no muestra su último detalle de pago. Entonces, crea la siguiente clase que implementa la
-    interfaz de pago.
+#### 13. Ahora supongamos que tienes un nuevo requisito que dice que necesitas admitir usuarios invitados en el futuro. Puedes procesar la solicitud de pago de un usuario invitado, pero no muestra su último detalle de pago. Entonces, crea la siguiente clase que implementa la interfaz de pago.
 
     >La clase **GuestUserPayment** que implementa **Payment** es:
  ```java
@@ -309,9 +297,7 @@ public class Cliente {
 > para aludir que esta operación no es válidad, ya que por lógica
 > un usuario ***invitado*** no tiene registros de pagos anteriores, dado que no es un usuario registrado. 
 
-14. Dentro del método main(), utilizas una instancia de usuario invitado e intenta 
-    usar su clase auxiliar de la misma manera,¿ qué tipo de excepción te encuentras?¿Cuál es la
-    solución?
+#### 14. Dentro del método main(), utilizas una instancia de usuario invitado e intenta usar su clase auxiliar de la misma manera,¿ qué tipo de excepción te encuentras?¿Cuál es la solución?
 
 El usuario invitado decide realizar un pago, para ello se
 instancia **guestUser** de **GuestUserPayment** y agregamos a helper.
@@ -396,8 +382,7 @@ El resultado de la ejecución sería los siguiente:
 
 ![Salida de la pregunta 12](./src/main/resources/pregunta14s.png)
 
-15. Todo lo anterior, lo más importante es que viola el OCP cada vez que modifica una
-    clase existente que usa esta cadena if-else. Entonces, busquemos una mejor solución.
+#### 15. Todo lo anterior, lo más importante es que viola el OCP cada vez que modifica una clase existente que usa esta cadena if-else. Entonces, busquemos una mejor solución.
 >Efectivamente, si creamos otro tipo de **Payment** 
 > tenemos que modificar la clase **PaymentHelper** especialmente en su 
 > método **showPreviousPayments**.
@@ -405,7 +390,7 @@ El resultado de la ejecución sería los siguiente:
 > condicional que maneje la nueva caracteristica de este nuevo tipo de pago. 
 >El cual viola el principio de Abierto Cerrado (OCP).
 
-16. Ajuste las interfaces PreviousPayment y NewPayment estos nuevos nombres en las clases.
+#### 16. Ajuste las interfaces PreviousPayment y NewPayment estos nuevos nombres en las clases.
 
 El diseño solid siguieno LSP quedaría de la siguiente manera:
 
@@ -523,7 +508,7 @@ public static void main(String[] args) {
 }
 ```
 
-17. ¿Cuáles son los cambios clave?
+#### 17. ¿Cuáles son los cambios clave?
 >1. Separar las responsabilidades de la interface **Payment**, en dos interfaces
 >**PreviousPayment** y **NewPayment**, de tal manera que sea versatil en la implentacion de sus clases.
 
@@ -540,10 +525,7 @@ Los cambios anteriores hizo que los if-them de la clase **PaymentHelper** se eli
 
 
 
-18. Ten que aquí el enfoque clave estaba en el principio LSP, nada más. Podrías
-refactorizar fácilmente el código del cliente usando algún método estático. Por ejemplo realiza
-una modificación donde utilizas un método estático para mostrar todas las solicitudes de pago
-y utilizar este método siempre que lo necesites.
+#### 18. Ten que aquí el enfoque clave estaba en el principio LSP, nada más. Podrías refactorizar fácilmente el código del cliente usando algún método estático. Por ejemplo realiza una modificación donde utilizas un método estático para mostrar todas las solicitudes de pago y utilizar este método siempre que lo necesites.
 
 >En esta refactorización. Se ha creado el método estático **mostrarSolicitudesDePago**, que como su nombre mismo lo dice "muestra las solicitudes de pago" en la clase **cliente**.
 > Como se podrá observa en el siguiente código.
@@ -585,17 +567,13 @@ public class Cliente {
 ```
 ### Principio de segregación de interfaz
 
-19. ¿Por qué un usuario necesita cambiar una clase base (o una interfaz)?
+#### 19. ¿Por qué un usuario necesita cambiar una clase base (o una interfaz)?
 >Si usuario tiene la necesidad de cambiar el comportamiento de una método 
 > heredado (o implementado) de su clase base  (o una interfaz). Puede ser su tipo de retorno o
 > tipo de parametros.
 > Entonces se tiene que cambiar tambien en la clase base. Para que la sobreescritura sea coherente. 
 
-20. Para usar esta jerarquía de herencia, una vez que modificas el método sendFax() a
-    sendFax(Fax faxType) en la clase ImpresoraAvanzada, exige que cambies la interfaz de
-    Impresora (sí, aquí también rompe el OCP).
-    Cuando actualices Impresora, también debes actualizar la clase impresoraBasica para
-    adaptarse a este cambio. ¡Ahora ves el problema!. Explica el problema.
+##### 20. Para usar esta jerarquía de herencia, una vez que modificas el método sendFax() a sendFax(Fax faxType) en la clase ImpresoraAvanzada, exige que cambies la interfaz de Impresora (sí, aquí también rompe el OCP). Cuando actualices Impresora, también debes actualizar la clase impresoraBasica para adaptarse a este cambio. ¡Ahora ves el problema!. Explica el problema.
 
 Modificando el metodo **sendFax** de la clase **ImpresoraAvanzada**:
 
@@ -774,8 +752,6 @@ class ImpresoraBasica implements Impresora {
 
 >De esta manera podemos lanzar una exepción a la hora de que se 
 
-Obs: Para dar una analogia en el mundo real, imaginemos una impresora real basica  posee el boton adicional **sendFax**.
-El cliente preciona el boton, la impresora funiona por un momento y luego no sucede nada.
 
 #### 24. Comprueba tus respuestas añadiendo dentro de main(), el siguiente código polimórfico:
 >Para la solucion 3, que lanza una excepcion:
@@ -961,7 +937,7 @@ interface Impresora {
 >El problema potencial en esto seria que un método
 > predeterminado se implementaria implicitamente en las clases que implementan esta interfaz,
 > aunque estas no requieran tener esta funcionalidad.
->
+
 
 #### 30. ¿Qué sucede si usa un método vacío, en lugar de lanzar la excepción?
 > Este es la primera solucion mostradas en la pregunta 21.
@@ -970,9 +946,10 @@ La ejecución correspondiente es:
 ![](./src/main/resources/30.png)
 
 >Se observa que no sucede ningún error. 
-### Principio de inversión de dependencia (José)
-* Preguntas 31- 36 → 4 puntos
-31. Muestra la salida y explica los resultados en función de los métodos entregados
+
+### Principio de inversión de dependencia
+
+#### 31. Muestra la salida y explica los resultados en función de los métodos entregados
 
 * El objeto *usuario* intanciado de la clase **InterfazUsuario** llama a su método *saveEmployeeId* que recibe como
   argumento el ID del *usuario*.
@@ -981,7 +958,7 @@ La ejecución correspondiente es:
 
 ![](./src/main/resources/p31.png)
 
-32. El programa es simple, pero ¿qué tipo de problemas presenta?
+#### 32. El programa es simple, pero ¿qué tipo de problemas presenta?
 
 * Flexibilidad reducida: La clase **InterfazUsuario** depende de la clase OracleDatabase, impidiendo reutilizar la clase
   **InterfazUsuario** con una Base de Datos diferente.
@@ -993,7 +970,7 @@ La ejecución correspondiente es:
 Los problemas anteriormente mencionados son consecuencias del acoplamiento que existe entre la clase **InterfazUsuario**
 (clase de alto nivel) y la clase **OracleDatabase** (clase de bajo nivel), que mediante el DIP solucionaremos.
 
-33. Implementa la clase InterfazUsuario.
+#### 33. Implementa la clase InterfazUsuario.
     **InterfazUsuario**
 ```java
 class InterfazUsuario {
@@ -1013,7 +990,7 @@ class InterfazUsuario {
 }
 ```
 
-34. Completa todos los archivos siguientes de la sección SOLID
+#### 34. Completa todos los archivos siguientes de la sección SOLID
 * InterfazUsuario.java
 * BaseDatos.java
 * OracleDataBase.java
@@ -1108,13 +1085,13 @@ El programa resuelve todos los problemas anteriormente mencionados:
 * Realizar los tests son menos complicados: Podemos realizar test de forma aislada, por ello, si un test falla, es más
   fácil ver que objeto es el culpable.
 
-35. Encuentra alguna excepción a esta sugerencia.
+#### 35. Encuentra alguna excepción a esta sugerencia.
 
 >Los módulos de alto nivel simplemente no deberían depender de los módulos de bajo nivel de ninguna manera.
 
 
 
-36. El constructor de la clase InterfazUsuario acepta un parámetro de base de datos.
+#### 36. El constructor de la clase InterfazUsuario acepta un parámetro de base de datos.
     Proporciona una instalación adicional a un usuario cuando utiliza tanto el constructor como el
     método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
 
