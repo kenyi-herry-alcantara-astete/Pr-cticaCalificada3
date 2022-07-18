@@ -10,11 +10,11 @@ public class Cliente {
         usuario.saveEmployeeId("E001");
 
         // Usando Mysql
-        usuario = new InterfazUsuario(new MySQLDatabase());
+        usuario.setBaseDatos(new MySQLDatabase());
         usuario.saveEmployeeId("E001");
 
         // Cambiando la base de datos objetivo
-        usuario = new InterfazUsuario(new OracleDatabase());
+        usuario.setBaseDatos(new OracleDatabase());
         usuario.saveEmployeeId("E001");
     }
 }
