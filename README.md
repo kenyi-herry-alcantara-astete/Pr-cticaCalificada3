@@ -103,24 +103,135 @@ clase, como la siguiente:
 >y displayResult() de esta manera al modificar cualquiera de las 2 la class Estudiante permanece invariante cumpliento el
 >principio SOLID de abierto y cerrado.
 
-6.Muestra la salida y explica los resultados en función de los métodos entregados
+6. Muestra la salida y explica los resultados en función de los métodos entregados \
 
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.png)\
 
 >Se crea una lista enrolledStudents del tipo Estudiante en la clase Cliente donde esta el main, se usa el método enrollStudents() para llenar dicha lista con los datos de los estudiantes, estos datos son suministrados por el cliente.\
->![Salida de la pregunta 12](./src/main/resources/pregunta6.1.png)\
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.1.png)
 >Para poder mostrar los resultados usando un objeto de la clase Estudiante sobreescribimos el método toString() este metodo ya viene
-> por defecto en java en el paquete java Object dicho método al imprimir un objeto de una clase te muestra el paquete, el nombre y un codigo hash de la Clase a cual pertenece el objeto impreso, convenientemente se sobrescribe el método para poder mostrar los atributos del estudiante sin hacerlo uno por uno.
+> por defecto en java en el paquete java Object dicho método al imprimir un objeto de una clase te muestra el paquete, el nombre y un codigo hash de la Clase a cual pertenece el objeto impreso, convenientemente se sobrescribe el método para poder mostrar los atributos del estudiante sin hacerlo uno por uno.\
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.2.png)\
 > Imprimimos\
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.3.png)\
->Por ultimo de la misma manera que estudiantes se muestra las distinciones donde el método evaluateDistinction() es el encargado , mostrando distinciones de acuerdo al score que es una atributo de estudiante, te muestra si as\
->recibido una distinción de acuerdo al departamento que pertenezcan.\
+>Por ultimo de la misma manera que estudiantes se muestra las distinciones donde el método evaluateDistinction() es el encargado , mostrando distinciones de acuerdo al score que es una atributo de estudiante, te muestra si as
+>recibido una distinción de acuerdo al departamento que pertenezcan.
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)\
 > Imprimimos\
 > ![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)\
 
 7. ¿Cuál es el problema con este diseño y las razones posibles del problema?
+>Si necesitamos añadir una nueva área como ingeniería, se tiene que cambiar el
+>código de la clase DistinctionDecider(), arriesgándonos a descomponerlo.El problema 
+> radica en que la clase DistinctionDecider() se encarga de la lógica y de definir nuevos departamentos 
+> esto ocasiona que al agregar un nuevo departamento modifiquemos dicha clase violando el principio de abierto y cerrado ya que la función de esta clase no esta bien definida
+8. Debes abordar el método de evaluación para la distinción de una mejor manera.
+   Por lo tanto, crea la interfaz DistinctionDecider que contiene un método llamado
+   EvaluationDistinction.
+```java
+interface DistinctionDecider {
+    void EvaluationDistinction();
+}
+```
+9. Completa el código de ArtsDistinctionDecider y ScienceDistinctionDecider que
+implementan esta interfaz y sobreescriben el método de evaluateDistinction(...) para
+especificar los criterios de evaluación según sus necesidades. De esta forma, los criterios de
+distinción específicos de flujo se envuelven en una unidad independiente.
+
+```java
+public class ArtsDistinctionDecider implements DistinctionDecider{
+
+    @Override
+    public void EvaluationDistinction(Estudiante estudiante) {
+            if (estudiante.score > 70) {
+                System.out.println(estudiante.regNumber+" ha recibido una distincion en artes.");
+            }
+    }
+
+}
+```
+```java
+public class ScienceDistinctionDecider implements DistinctionDecider {
+
+    @Override
+    public void EvaluationDistinction(Estudiante estudiante) {
+            if (estudiante.score > 80) {
+                System.out.println(estudiante.regNumber+" ha recibido una distincion en ciencias.");
+            }
+    }
+}
+```
+10. Realiza una demostración completa que sigue a OCP. Explica tus resultados.\
+
+![Salida de la pregunta 12](./src/main/resources/pregunta10.png)\
+
+>En la clase cliente se inscriben los estudiantes ya sea de ciencia o artes, el método encargado de hacer esto es enrollScienceStudent() y enrollArtsStudents()
+>
+```java
+class cliente {
+        ...
+        System.out.println("Demostracion OCP");
+        List<Estudiante> CienciasEstudiantes=enrollScienceStudents();
+        List<Estudiante> ArtesEstudiantes=enrollArtsStudents();
+
+        // Muestra todos los resultados.
+        System.out.println("Resultados:");
+
+        for(Estudiante estudiante:CienciasEstudiantes){
+        System.out.println(estudiante);
+        }
+        for(Estudiante estudiante:ArtesEstudiantes){
+        System.out.println(estudiante);
+        }
+        ...
+}
+```
+>Acto seguido se pasa a imprimir los estudiantes con sus respectivos métodos
+estos métodos son sobreescritos de su clase padre que es Estudiante para poder mostrar la información del departamento al que pertenecen.
+
+>En la clase Padre(Abstracta)
+```java
+public Estudiante(String name, String regNumber, double score) {
+    this.name = name;
+    this.regNumber = regNumber;
+    this.score = score;
+}
+```
+>sobreescritura para el departamento en la clase CienciaEstudiante que hereda de la clase Estudiante
+
+```java
+List<String> science= Arrays.asList("Ciencia de la computacion","Fisica");
+    public CienciaEstudiante(String name, String regNumber, double score, String department) {
+        super(name, regNumber, score);
+        if(science.contains(department))
+            this.department = department;
+    }
+```
+>sobreescritura para el departamento en la clase ArteEstudiante que hereda de la clase Estudiante
+
+```java
+List<String> arts= Arrays.asList("Historia","Literatura");
+public ArteEstudiante(String name, String regNumber, double score, String department) {
+    super(name, regNumber, score);
+    if (arts.contains(department))
+        this.department = department;
+
+    }
+```
+> por ultimo el método encargado de ordenar los datos con sus respectivas indentaciones es la sobre escritura del método toString() que es un método de java.object que ya esta implícito en el proyecto.
+
+```java
+public String toString() {
+    return ("Nombre: " + name + "\nNumero Reg: " + regNumber + "\nDept:" + department + "\nMarks:"
+    + score + "\n");
+}
+```
+11. ¿Cuáles son las principales ventajas ahora?
+
+>Las principales ventajas ahora es que si queremos agregar un nuevo departamento ya no tendríamos que cambiar el codigo de DistinctionDecider como se vio en la parte de NoSolid
+solo bastaría con crear una nueva clase IngenieriaDistinctionDecider y que esta implemente la interfaz DistinctionDecider haciendo esto ya no se modificaria el código de ninguna de las clases lo cual estaría cumpliendo el principio OCP cerrada para modificarse , pero abierta(IngenieriaDistinctionDecider) para extenciones , esto nos ahorra tiempo porque supongamos que tengamos mas de 20 clases y no estamos aplicando OCP tendriamos que modificar muchas clases para poder agregar una nueva implementación lo que llevaría tiempo y costo.
+
+
 
 ### Principio de sustitución de Liskov  (Kenyi)
 

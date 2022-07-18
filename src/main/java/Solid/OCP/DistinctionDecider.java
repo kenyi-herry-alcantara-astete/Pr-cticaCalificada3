@@ -1,5 +1,5 @@
-package Solid.OCP;
+ackage Solid.OCP;
 
-/*
-...completa
-*/
+interface DistinctionDecider {
+    void EvaluationDistinction(Estudiante estudiante);
+}

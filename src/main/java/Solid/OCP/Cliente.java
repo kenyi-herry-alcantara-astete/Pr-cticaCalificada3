@@ -1,5 +1,5 @@
 package Solid.OCP;
-/*
+
 import java.util.ArrayList;
 import java.util.List;
 public class Cliente {
@@ -24,16 +24,16 @@ public class Cliente {
         DistinctionDecider artsDistinctionDecider = new ArtsDistinctionDecider();
         System.out.println("Distinciones:");
         for (Estudiante estudiante : CienciasEstudiantes) {
-            scienceDistinctionDecider.evaluateDistinction(estudiante);
+            scienceDistinctionDecider.EvaluationDistinction(estudiante);
         }
         for (Estudiante estudiante : ArtesEstudiantes) {
-            artsDistinctionDecider.evaluateDistinction(estudiante);
+            artsDistinctionDecider.EvaluationDistinction(estudiante);
         }
 
     }
 
     private static List<Estudiante> enrollScienceStudents() {
-        Estudiante Irene = new CienciaEstudiante("Irene", "R1", 81.5,"Ciencia de la computacion.");
+        Estudiante Irene = new CienciaEstudiante("Irene", "R1", 81.5,"Ciencia de la computacion");
         Estudiante jessica = new CienciaEstudiante("Jessica", "R2", 72,"Fisica");
         List<Estudiante> CienciasEstudiantes = new ArrayList<Estudiante>();
         CienciasEstudiantes.add(Irene);
@@ -52,4 +52,3 @@ public class Cliente {
 
 
 }
-*/
