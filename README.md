@@ -103,22 +103,22 @@ clase, como la siguiente:
 >y displayResult() de esta manera al modificar cualquiera de las 2 la class Estudiante permanece invariante cumpliento el
 >principio SOLID de abierto y cerrado.
 
-6. Muestra la salida y explica los resultados en función de los métodos entregados
+6. Muestra la salida y explica los resultados en función de los métodos entregados \
 
->![Salida de la pregunta 12](./src/main/resources/pregunta6.png)
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.png)\
 
->Se crea una lista enrolledStudents del tipo Estudiante en la clase Cliente donde esta el main, se usa el método enrollStudents() para llenar dicha lista con los datos de los estudiantes, estos datos son suministrados por el cliente.
+>Se crea una lista enrolledStudents del tipo Estudiante en la clase Cliente donde esta el main, se usa el método enrollStudents() para llenar dicha lista con los datos de los estudiantes, estos datos son suministrados por el cliente.\
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.1.png)
 >Para poder mostrar los resultados usando un objeto de la clase Estudiante sobreescribimos el método toString() este metodo ya viene
-> por defecto en java en el paquete java Object dicho método al imprimir un objeto de una clase te muestra el paquete, el nombre y un codigo hash de la Clase a cual pertenece el objeto impreso, convenientemente se sobrescribe el método para poder mostrar los atributos del estudiante sin hacerlo uno por uno.
->![Salida de la pregunta 12](./src/main/resources/pregunta6.2.png)
+> por defecto en java en el paquete java Object dicho método al imprimir un objeto de una clase te muestra el paquete, el nombre y un codigo hash de la Clase a cual pertenece el objeto impreso, convenientemente se sobrescribe el método para poder mostrar los atributos del estudiante sin hacerlo uno por uno.\
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.2.png)\
 > Imprimimos\
 >![Salida de la pregunta 12](./src/main/resources/pregunta6.3.png)\
 >Por ultimo de la misma manera que estudiantes se muestra las distinciones donde el método evaluateDistinction() es el encargado , mostrando distinciones de acuerdo al score que es una atributo de estudiante, te muestra si as
 >recibido una distinción de acuerdo al departamento que pertenezcan.
->![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)
-> Imprimimos
-> ![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)
+>![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)\
+> Imprimimos\
+> ![Salida de la pregunta 12](./src/main/resources/pregunta6.4.png)\
 
 7. ¿Cuál es el problema con este diseño y las razones posibles del problema?
 >Si necesitamos añadir una nueva área como ingeniería, se tiene que cambiar el
@@ -161,9 +161,9 @@ public class ScienceDistinctionDecider implements DistinctionDecider {
     }
 }
 ```
-10. Realiza una demostración completa que sigue a OCP. Explica tus resultados.
+10. Realiza una demostración completa que sigue a OCP. Explica tus resultados.\
 
-![Salida de la pregunta 12](./src/main/resources/pregunta10.png)
+![Salida de la pregunta 12](./src/main/resources/pregunta10.png)\
 
 >En la clase cliente se inscriben los estudiantes ya sea de ciencia o artes, el método encargado de hacer esto es enrollScienceStudent() y enrollArtsStudents()
 >
