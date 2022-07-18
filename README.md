@@ -1117,8 +1117,7 @@ class Tiempo{
 }
 ```
 
-#### 36. El constructor de la clase InterfazUsuario acepta un parámetro de base de datos. Proporciona una instalación adicional a un usuario cuando utiliza tanto el 
-constructor como el método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
+#### 36. El constructor de la clase InterfazUsuario acepta un parámetro de base de datos. Proporciona una instalación adicional a un usuario cuando utiliza tanto el constructor como el método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
 
 Al refactorizar la clase **InterfazUsuario** el beneficio que se obtiene es eliminar el acoplamiento con la clase **OracleDataBase**
 (una Base de Datos específica), permitiendo utilizar diferentes Bases de Datos (MySQL, MongoDB, ...), para ello se realizó una abstracción
