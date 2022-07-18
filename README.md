@@ -1091,14 +1091,12 @@ El programa resuelve todos los problemas anteriormente mencionados:
 
 Una excepción a esta sugerencia podria ser si la clase de bajo nivel es inmutable, es decir, no permite variaciones en el 
 transcurso del tiempo. Por ejemplo:
+
 Tiempo: Clase de bajo nivel.
 Cronometro: Clase de alto nivel.
+
 Al instanciar un objeto de la clase Cronometro, se instancia un objeto de la clase Tiempo, teniendo así que la clase Cronometro
 conoce a la case Tiempo, pero no afecta, ya que la clase Tiempo es inmutable.
-
-#### 36. El constructor de la clase InterfazUsuario acepta un parámetro de base de datos.
-    Proporciona una instalación adicional a un usuario cuando utiliza tanto el constructor como el
-    método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
 
 ```java
 class Cronometro{
@@ -1117,6 +1115,9 @@ class Tiempo{
     }
 }
 ```
+
+#### 36. El constructor de la clase InterfazUsuario acepta un parámetro de base de datos. Proporciona una instalación adicional a un usuario cuando utiliza tanto el 
+constructor como el método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
 
 Al refactorizar la clase **InterfazUsuario** el beneficio que se obtiene es eliminar el acoplamiento con la clase **OracleDataBase**
 (una Base de Datos específica), permitiendo utilizar diferentes Bases de Datos (MySQL, MongoDB, ...), para ello se realizó una abstracción
